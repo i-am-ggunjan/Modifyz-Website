@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Header.css";
 import Modifyz from "../assets/Modifyz.jpg";
 
 const Header = () => {
-  const [show, setShow] = useState(false);
+  const navRef = useRef();
+
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
+
   return (
     <>
       <header className="shadow-2xl shadow-[#219ff5]/40">
@@ -20,14 +25,11 @@ const Header = () => {
                 <span className="fyz">FYZ</span>
               </div>
             </div>
-            <span
-              className="hamburger hamburger-1"
-              onClick={() => setShow(!show)}
-            >
+            <span className="hamburger hamburger-1" onClick={showNavbar}>
               ≡
             </span>
 
-            <nav className={show ? "menu mobile-menu" : "mobile-menu"}>
+            <nav ref={navRef}>
               <ul>
                 <li>
                   <Link to={"/"}>Home</Link>
