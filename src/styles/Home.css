@@ -1,0 +1,14 @@
+.home {
+  padding-top: 100px;
+  padding-left: 10vw;
+  padding-right: 5vw;
+  gap: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.home img {
+    width: 60vw;
+}
