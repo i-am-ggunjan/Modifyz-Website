@@ -21,6 +21,10 @@
   color: #219ff5;
 }
 
+form span .error {
+  color: red;
+}
+
 .form form {
   display: flex;
   flex-direction: column;
