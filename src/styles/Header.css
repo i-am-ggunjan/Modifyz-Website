@@ -87,7 +87,7 @@ header nav ul li a:hover {
     position: absolute;
     margin-right: 10vw;
     width: 85vw;
-    bottom: -75vh;
+    bottom: 60vh;
     transition: all 2s;
     z-index: 1;
   }
@@ -106,7 +106,7 @@ header nav ul li a:hover {
   }
 
   header .responsive_nav {
-    bottom: 60vh;
+    bottom: -70vh;
   }
 }
 
