@@ -49,3 +49,9 @@ form span .error {
   line-height: 20px;
   border-radius: 30px;
 }
+
+.form form input[type="number"]::-webkit-outer-spin-button,
+.form form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Store } from "../api/RegStore";
 import "../styles/Form.css";
 import { useForm } from "react-hook-form";
@@ -7,12 +7,24 @@ const Form = () => {
   let data = useContext(Store);
 
   const form = useForm();
-  const { register, handleSubmit, formState } = form;
+  const { register, setValue, watch, handleSubmit, formState } = form;
   const { errors } = formState;
 
   const onSubmit = (value) => {
     data.handleCreate(value.number);
   };
+
+  const number = watch("number");
+  const maxLength = 12;
+
+  useEffect(() => {
+    if (number && number.toString().length > maxLength) {
+      setValue("number", number.toString().slice(0, maxLength));
+      register("number").disabled = true;
+    } else {
+      register("number").disabled = false;
+    }
+  }, [number, maxLength, register, setValue]);
 
   return (
     <>
@@ -33,13 +45,13 @@ const Form = () => {
                   value: true,
                   message: "Number is required",
                 },
-                maxLength: {
-                  value: 10,
-                  message: "Limit the max-length",
-                },
                 minLength: {
                   value: 10,
-                  message: "Less than required value ",
+                  message: "Number should have 10 digits",
+                },
+                pattern: {
+                  value: /^(\+91[\-\s]?)?[0]?(91)?[6789]\d{9}$/,
+                  message: "Invalid Number",
                 },
               })}
             />
